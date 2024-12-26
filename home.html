@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NAGASA Galaxy - Home</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+            background: radial-gradient(circle, #0f0f1b, #02020a);
+            color: #fff;
+        }
+
+        canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            background: rgba(0, 0, 0, 0.6);
+        }
+
+        .navbar h1 {
+            font-size: 1.8rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #00e6ff;
+        }
+
+        .navbar .links a {
+            margin: 0 15px;
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: 0.3s;
+        }
+
+        .navbar .links a:hover {
+            color: #00e6ff;
+            text-shadow: 0 0 10px #00e6ff;
+        }
+
+        .content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        .content h2 {
+            font-size: 2rem;
+            color: #fff;
+        }
+
+        .footer {
+            position: absolute;
+            bottom: 10px;
+            width: 100%;
+            text-align: center;
+            color: #aaa;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="galaxyCanvas"></canvas>
+
+    <!-- Navbar -->
+    <div class="navbar">
+        <h1>NAGASA</h1>
+        <div class="links">
+            <a href="members.html">Members</a>
+            <a href="games.html">Games</a>
+            <a href="training.html">Training</a>
+        </div>
+    </div>
+
+ <script>
+        //  Õﬁﬁ „‰  ”ÃÌ· «·œŒÊ· ⁄‰œ  Õ„Ì· «·’›Õ…
+        window.onload = function() {
+            if (!localStorage.getItem('loggedIn')) {
+                window.location.href = "login.html";  // ≈⁄«œ…  ÊÃÌÂ ≈·Ï ’›Õ…  ”ÃÌ· «·œŒÊ· ≈–« ·„ Ì „  ”ÃÌ· «·œŒÊ·
+            } else {
+                document.getElementById("usernameDisplay").innerText = localStorage.getItem('username');
+            }
+        }
+
+        //  ”ÃÌ· «·Œ—ÊÃ
+        function logout() {
+            localStorage.removeItem('loggedIn');
+            window.location.href = "login.html";  // ≈⁄«œ… «· ÊÃÌÂ ≈·Ï ’›Õ…  ”ÃÌ· «·œŒÊ· »⁄œ  ”ÃÌ· «·Œ—ÊÃ
+        }
+    </script>
+</body>
+</html>
+«·ŒÿÊ… 4: —»ÿ »«ﬁÌ «·’›Õ«  („À· «·√⁄÷«¡ Ê«·√·⁄«» Ê«· œ—Ì»)
+‰›” «·ÿ—Ìﬁ… «· Ì « »⁄ Â« ›Ì ’›Õ… home.html°  Õ «Ã ·· Õﬁﬁ „‰ Õ«·…  ”ÃÌ· «·œŒÊ· ›Ì ﬂ· ’›Õ… ﬁ»· «·”„«Õ »«·Ê’Ê· ≈·ÌÂ«.
+
+„À«· ⁄·Ï ’›Õ… members.html:
+html
+‰”Œ «·ﬂÊœ
+<!-- members.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NAGASA Galaxy - Members</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Members Page</h1>
+    <a href="home.html">Back to Home</a>
+    <script>
+        //  Õﬁﬁ „‰  ”ÃÌ· «·œŒÊ· ⁄‰œ  Õ„Ì· «·’›Õ…
+        if (!localStorage.getItem('loggedIn')) {
+            window.location.href = "login.html";  // ≈⁄«œ… «· ÊÃÌÂ ≈·Ï ’›Õ…  ”ÃÌ· «·œŒÊ· ≈–« ·„ Ì „  ”ÃÌ· «·œŒÊ·
+        }
+    </script>
+
+    <!-- Main Content -->
+    <div class="content">
+        <h2>Welcome to NAGASA Galaxy - A Universe of Infinite Possibilities</h2>
+    </div>
+ <a href="home.html">Back to Home</a>
+    <script>
+        //  Õﬁﬁ „‰  ”ÃÌ· «·œŒÊ· ⁄‰œ  Õ„Ì· «·’›Õ…
+        if (!localStorage.getItem('loggedIn')) {
+            window.location.href = "login.html";  // ≈⁄«œ… «· ÊÃÌÂ ≈·Ï ’›Õ…  ”ÃÌ· «·œŒÊ· ≈–« ·„ Ì „  ”ÃÌ· «·œŒÊ·
+        }
+    </script>
+
+    <!-- Footer -->
+    <div class="footer">
+        &copy; 2024 NAGASA Galaxy - All Rights Reserved.
+    </div>
+
+    <script>
+        const canvas = document.getElementById("galaxyCanvas");
+        const ctx = canvas.getContext("2d");
+        let stars = [];
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        class Star {
+            constructor(x, y) {
+                this.x = x || Math.random() * canvas.width;
+                this.y = y || Math.random() * canvas.height;
+                this.radius = Math.random() * 2 + 0.5;
+                this.dy = Math.random() * 0.5 + 0.1;
+                this.color = `hsl(${Math.random() * 360}, 80%, 60%)`;
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctx.fillStyle = this.color;
+                ctx.fill();
+            }
+
+            update() {
+                this.y += this.dy;
+                if (this.y > canvas.height) {
+                    this.y = 0;
+                }
+                this.draw();
+            }
+        }
+
+        function init() {
+            stars = [];
+            for (let i = 0; i < 300; i++) {
+                stars.push(new Star());
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            stars.forEach(star => star.update());
+            requestAnimationFrame(animate);
+        }
+
+        window.addEventListener("mousemove", (e) => {
+            let starCount = 10;
+            for (let i = 0; i < starCount; i++) {
+                stars.push(new Star(e.x, e.y));
+            }
+        });
+
+        window.addEventListener("touchmove", (e) => {
+            e.preventDefault();
+            let starCount = 10;
+            for (let i = 0; i < starCount; i++) {
+                stars.push(new Star(e.touches[0].pageX, e.touches[0].pageY));
+            }
+        });
+
+        window.addEventListener("resize", () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            init();
+        });
+
+        init();
+        animate();
+    </script>
+</body>
+</html>
